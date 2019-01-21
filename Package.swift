@@ -19,14 +19,17 @@ var package = Package(
             dependencies: []),
         .testTarget(
             name: "MathTests",
-            dependencies: ["Test", "Math"])
+            dependencies: ["Test", "Math"]),
     ]
 )
 
 #if arch(x86_64)
 package.targets.append(.target(name: "X86_64"))
 package.targets[0].dependencies.append("X86_64")
-#else
+#endif
+// Temporary
 package.targets.append(.target(name: "libc"))
 package.targets[0].dependencies.append("libc")
-#endif
+package.targets.append(.testTarget(
+    name: "LibcTests",
+    dependencies: ["Test", "libc"]))

@@ -1,0 +1,1 @@
+@_exported import func libc.exp2
