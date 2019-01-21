@@ -1,7 +1,7 @@
 // swift-tools-version:5.0
 import PackageDescription
 
-let package = Package(
+var package = Package(
     name: "Math",
     products: [
         .library(
@@ -22,3 +22,11 @@ let package = Package(
             dependencies: ["Test", "Math"])
     ]
 )
+
+#if arch(x86_64)
+package.targets.append(.target(name: "X86_64"))
+package.targets[0].dependencies.append("X86_64")
+#else
+package.targets.append(.target(name: "libc"))
+package.targets[0].dependencies.append("libc")
+#endif

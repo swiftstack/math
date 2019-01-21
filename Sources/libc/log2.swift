@@ -5,6 +5,8 @@
  * FreeBSD (lib/msun/src/e_log2.c)
  */
 
+#if !arch(x86_64)
+
 let ivln2hi = 1.44269504072144627571e+00, /* 0x3ff71547, 0x65200000 */
     ivln2lo = 1.67517131648865118353e-10, /* 0x3de705fc, 0x2eefa200 */
     lg1 = 6.666666666666735130e-01,  /* 3FE55555 55555593 */
@@ -108,24 +110,4 @@ public func log2(_ x: Double) -> Double {
     return val_lo + val_hi
 }
 
-extension Double {
-    @inline(__always)
-    init(high: UInt32, low: UInt32) {
-        self.init(bitPattern: UInt64(high) << 32 | UInt64(low))
-    }
-
-    @inline(__always)
-    mutating func clearLowWord() {
-        self = Double(bitPattern: bitPattern & 0xffffffff_00000000)
-    }
-
-    var highWord: UInt32 {
-        @inline(__always)
-        get { return UInt32(truncatingIfNeeded: bitPattern >> 32) }
-    }
-
-    var lowWord: UInt32 {
-        @inline(__always)
-        get { return UInt32(truncatingIfNeeded: bitPattern) }
-    }
-}
+#endif // #if !arch(X86_64)
