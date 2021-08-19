@@ -3,5 +3,5 @@
 ## Package.swift
 
 ```swift
-.package(url: "https://github.com/swift-stack/math.git", .branch("master"))
+.package(url: "https://github.com/swiftstack/math.git", .branch("dev"))
 ```

@@ -10,8 +10,8 @@ var package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/swift-stack/test.git",
-            .branch("master"))
+            url: "https://github.com/swiftstack/test.git",
+            .branch("fiber"))
     ],
     targets: [
         .target(
