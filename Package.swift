@@ -6,12 +6,12 @@ var package = Package(
     products: [
         .library(
             name: "Math",
-            targets: ["Math"])
+            targets: ["Math"]),
     ],
     dependencies: [
         .package(
             url: "https://github.com/swiftstack/test.git",
-            .branch("fiber"))
+            .branch("fiber")),
     ],
     targets: [
         .target(
